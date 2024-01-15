@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2021: true, node: true },
+  env: { browser: true, es2021: true, node: true, 'cypress/globals': true },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -14,6 +14,7 @@ module.exports = {
   plugins: ['react', 'react-hooks'],
   rules: {
     'no-alert': 'off',
+    'no-underscore-dangle': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'import/prefer-default-export': 'off',

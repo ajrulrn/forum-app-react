@@ -13,14 +13,12 @@ import {
   asyncToggleLikeCommentActionCreator,
   asyncToggleLikeDetailActionCreator,
 } from '../states/threadDetail/action';
+import Section from '../components/styled/Section';
 
 function DetailPage() {
   const { id } = useParams();
-
-  const {
-    threadDetail = null,
-    authUser,
-  } = useSelector((states) => states);
+  const threadDetail = useSelector((states) => states.threadDetail);
+  const authUser = useSelector((states) => states.authUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -57,7 +55,7 @@ function DetailPage() {
   }));
 
   return (
-    <section className="detail-page">
+    <Section>
       <Link to="/" className="button-back">
         <div>
           <GoArrowLeft /> View Threads
@@ -85,7 +83,7 @@ function DetailPage() {
         toggleLike={onToggleLikeComment}
         toggleDislike={onToggleDislikeComment}
       />
-    </section>
+    </Section>
   );
 }
 

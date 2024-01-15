@@ -5,6 +5,7 @@ import parser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import DislikeButton from './DislikeButton';
 import LikeButton from './LikeButton';
+import Card from './styled/Card';
 
 function ThreadDetail({
   id,
@@ -23,7 +24,7 @@ function ThreadDetail({
   const isDislikedThread = downVotesBy.includes(authUser);
 
   return (
-    <div className="thread-detail">
+    <Card>
       <div className="thread-detail__groups">
         <div className="thread-detail__group-one">
           <img src={owner.avatar} alt="" className="thread-detail__avatar" />
@@ -42,7 +43,7 @@ function ThreadDetail({
       <small className="thread-detail__count">{upVotesBy.length}</small>
       <DislikeButton id={id} toggleDislike={toggleDislike} isDisliked={isDislikedThread} />
       <small className="thread-detail__count">{downVotesBy.length}</small>
-    </div>
+    </Card>
   );
 }
 
@@ -63,7 +64,7 @@ ThreadDetail.propTypes = {
   owner: PropTypes.shape(ownerShape).isRequired,
   toggleLike: PropTypes.func.isRequired,
   toggleDislike: PropTypes.func.isRequired,
-  authUser: PropTypes.string.isRequired,
+  authUser: PropTypes.string,
 };
 
 export default ThreadDetail;

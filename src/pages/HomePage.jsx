@@ -5,13 +5,12 @@ import { IoMdAdd } from 'react-icons/io';
 import ThreadsList from '../components/ThreadsList';
 import { asyncPopulateThreads } from '../states/shared/action';
 import { asyncToggleDislikeThread, asyncToggleLikeThread } from '../states/threads/action';
+import Section from '../components/styled/Section';
 
 function HomePage() {
-  const {
-    threads = [],
-    users = [],
-    authUser,
-  } = useSelector((states) => states);
+  const threads = useSelector((states) => states.threads);
+  const users = useSelector((states) => states.users);
+  const authUser = useSelector((states) => states.authUser);
 
   const dispatch = useDispatch();
 
@@ -34,12 +33,12 @@ function HomePage() {
   }));
 
   return (
-    <section className="home-page">
+    <Section>
       {
         authUser && <Link to="/new" className="btn-add">Add Thread <IoMdAdd /></Link>
       }
       <ThreadsList threads={threadList} toggleLike={onToggleLike} toggleDislike={onToggleDislike} />
-    </section>
+    </Section>
   );
 }
 

@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
-  const {
-    authUser,
-  } = useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
   const location = useLocation();
 
   return (

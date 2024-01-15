@@ -70,34 +70,13 @@ body {
     color: #262D34;
 }
 
-.home-page,
-.leaderboards,
-.login-page,
-.register-page,
-.profile-page,
-.add-page {
-    padding: 20px 1.5em 90px;
-    height: 89vh;
-    max-height: 89vh;
-    overflow-y: scroll;
-}
-
-.home-page::-webkit-scrollbar,
-.leaderboards::-webkit-scrollbar,
-.login-page::-webkit-scrollbar,
-.register-page::-webkit-scrollbar,
-.detail-page::-webkit-scrollbar,
-.profile-page::-webkit-scrollbar,
-.add-page::-webkit-scrollbar
-{
+section::-webkit-scrollbar {
 	width: 0px;
 }
 
-.thread-item {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #262D34;
-    margin-bottom: 20px;
+section small,
+section small a {
+    color: #F4F6F8;
 }
 
 .thread-item__groups {
@@ -173,39 +152,6 @@ body {
     margin-bottom: 40px;
 }
 
-.form-label {
-    display: block;
-    color: #F4F6F8;
-    margin-bottom: 5px;
-}
-
-.form-input {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    padding: 15px;
-    border-radius: 8px;
-    width: 100%;
-    background-color: #262D34;
-    margin-bottom: 20px;
-    color: #F4F6F8;
-}
-
-.form-button,
-.btn-logout,
-.btn-add {
-    border-radius: 8px;
-    border: none;
-    font-size: 1em;
-    padding: 15px;
-    width: 100%;
-    background-color: #C5D0E6;
-    color: #2C353D;
-    margin-bottom: 20px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
 .login-page small,
 .login-page small a,
 .register-page small,
@@ -263,21 +209,8 @@ body {
     font-weight: 600;
 }
 
-.detail-page {
-    height: 89vh;
-    padding: 20px 1.5em 20px;
-    overflow-y: scroll;
-}
-
 .threads a {
     text-decoration: none;
-}
-
-.thread-detail {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #262D34;
-    margin-bottom: 20px;
 }
 
 .thread-detail__groups {
@@ -346,13 +279,6 @@ body {
 .comment-title {
     margin: 20px 0;
     color: #F4F6F8;
-}
-
-.comment-item {
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #262D34;
-    margin-bottom: 20px;
 }
 
 .comment-item__group {
@@ -448,16 +374,6 @@ body {
     color: #F4F6F8;
 }
 
-.profile-page__card {
-    background-color: #262D34;
-    padding: 20px;
-    border-radius: 10px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
 .profile-page__avatar {
     width: 50px;
     border-radius: 6px;
@@ -473,14 +389,17 @@ body {
     font-size: .8em;
 }
 
-.btn-logout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
 .btn-add {
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    padding: 15px;
+    width: 100%;
+    background-color: #C5D0E6;
+    color: #2C353D;
+    margin-bottom: 20px;
+    cursor: pointer;
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
