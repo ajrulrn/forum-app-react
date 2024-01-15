@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import RegisterInput from '../components/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
+import Section from '../components/styled/Section';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -14,10 +15,10 @@ function RegisterPage() {
   };
 
   return (
-    <section className="register-page">
+    <Section>
       <RegisterInput register={onRegister} />
       <small>Already have an account ? <Link to="/login">Login</Link></small>
-    </section>
+    </Section>
   );
 }
 

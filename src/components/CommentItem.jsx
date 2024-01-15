@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import DislikeButton from './DislikeButton';
 import LikeButton from './LikeButton';
 import 'moment/locale/id';
+import Card from './styled/Card';
 
 function CommentItem({
   id,
@@ -21,7 +22,7 @@ function CommentItem({
   const isDislikedComment = downVotesBy.includes(authUser);
 
   return (
-    <div className="comment-item">
+    <Card>
       <div className="comment-item__group">
         <img src={owner.avatar} alt="" className="comment-item__avatar" />
         <div className="comment-item__group-one">
@@ -36,7 +37,7 @@ function CommentItem({
       <small className="comment-item__count">{upVotesBy.length}</small>
       <DislikeButton id={id} toggleDislike={toggleDislike} isDisliked={isDislikedComment} />
       <small className="comment-item__count">{downVotesBy.length}</small>
-    </div>
+    </Card>
   );
 }
 

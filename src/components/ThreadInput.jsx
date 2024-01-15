@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
+import Label from './styled/Label';
+import Input from './styled/Input';
+import Button from './styled/Button';
+import Textarea from './styled/Textarea';
 
 function ThreadInput({ addThread }) {
   const [title, onTitleChange] = useInput();
@@ -16,13 +20,13 @@ function ThreadInput({ addThread }) {
 
   return (
     <>
-      <label htmlFor="title" className="form-label">Title</label>
-      <input type="text" id="title" className="form-input" value={title} onChange={onTitleChange} />
-      <label htmlFor="body" className="form-label">Body</label>
-      <textarea name="" id="body" className="form-input" cols="30" rows="5" value={body} onChange={onBodyChange} />
-      <label htmlFor="category" className="form-label">Category <small>(optional)</small></label>
-      <input type="text" id="category" className="form-input" value={category} onChange={onCategoryChange} />
-      <button className="btn-add" onClick={onAddThread} type="button">Save</button>
+      <Label htmlFor="title">Ttitle</Label>
+      <Input type="text" id="title" value={title} onChange={onTitleChange}/>
+      <Label htmlFor="body">Body</Label>
+      <Textarea id="body" cols="30" rows="5" value={body} onChange={onBodyChange} />
+      <Label htmlFor="category">Category <small>(optional)</small></Label>
+      <Input type="text" id="category" value={category} onChange={onCategoryChange}/>
+      <Button onClick={onAddThread} type="button">Save</Button>
     </>
   );
 }

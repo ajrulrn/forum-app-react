@@ -19,10 +19,8 @@ import ProfilePage from './pages/ProfilePage';
 import AddPage from './pages/AddPage';
 
 function App() {
-  const {
-    authUser,
-    isPreload,
-  } = useSelector((states) => states);
+  const authUser = useSelector((states) => states.authUser);
+  const isPreload = useSelector((states) => states.isPreload);
   const dispatch = useDispatch();
   const location = useLocation();
 

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import CommentButton from './CommentButton';
 import DislikeButton from './DislikeButton';
 import LikeButton from './LikeButton';
+import Card from './styled/Card';
 
 function ThreadItem({
   id,
@@ -18,7 +19,7 @@ function ThreadItem({
   totalComments,
   createdAt,
   user,
-  authUser = '',
+  authUser,
   toggleLike,
   toggleDislike,
 }) {
@@ -26,7 +27,7 @@ function ThreadItem({
   const isDislikedThread = downVotesBy.includes(authUser);
 
   return (
-    <div className="thread-item">
+    <Card>
       <div className="thread-item__groups">
         <div className="thread-item__group-one">
           <img src={user.avatar} alt="" className="thread-item__avatar" />
@@ -51,7 +52,7 @@ function ThreadItem({
       <small className="thread-item__count">{downVotesBy.length}</small>
       <CommentButton />
       <small className="thread-item__count">{totalComments}</small>
-    </div>
+    </Card>
   );
 }
 
@@ -75,7 +76,7 @@ const threadItemShape = {
 ThreadItem.propTypes = {
   ...threadItemShape,
   user: PropTypes.shape(userShape).isRequired,
-  authUser: PropTypes.string.isRequired,
+  authUser: PropTypes.string,
   toggleLike: PropTypes.func.isRequired,
   toggleDislike: PropTypes.func.isRequired,
 };
