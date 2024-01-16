@@ -1,16 +1,39 @@
+/**
+* test scenario
+*
+* - threadDetailReducer function
+*  - should return the initial state when given by unknown action
+*  - should return the threadDetail when given by RECEIVE_THREAD_DETAIL action
+*  - should clear the threadDetail when given by CLEAR_THREAD_DETAIL action
+*  - should return the threadDetail with the toggled like thread when given by TOGGLE_LIKE_DETAIL
+     action
+*  - should return the threadDetail with the toggled dislike thread when given by
+     TOGGLE_DISLIKE_DETAIL action
+*  - should return the threadDetail with the toggled like comment when given by TOGGLE_LIKE_COMMENT
+     action
+*  - should return the threadDetail with the toggled dislike comment when given by
+     TOGGLE_DISLIKE_COMMENT action
+*
+*/
+
 import { describe, expect, it } from 'vitest';
 import threadDetailReducer from '../reducer';
 
 describe('threadDetailReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
+    // arrange
     const initialState = null;
     const action = { type: 'UNKNOWN' };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual(initialState);
   });
 
   it('should return the threadDetail when given by RECEIVE_THREAD_DETAIL action', () => {
+    // arrange
     const initialState = null;
     const action = {
       type: 'RECEIVE_THREAD_DETAIL',
@@ -45,12 +68,16 @@ describe('threadDetailReducer function', () => {
         },
       },
     };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual(action.payload.threadDetail);
   });
 
   it('should clear the threadDetail when given by CLEAR_THREAD_DETAIL action', () => {
+    // arrange
     const initialState = {
       id: 'thread-1',
       title: 'Thread Pertama',
@@ -80,12 +107,16 @@ describe('threadDetailReducer function', () => {
       ],
     };
     const action = { type: 'CLEAR_THREAD_DETAIL' };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual(null);
   });
 
   it('should return the threadDetail with the toggled like thread when given by TOGGLE_LIKE_DETAIL action', () => {
+    // arrange
     const initialState = {
       id: 'thread-1',
       title: 'Thread Pertama',
@@ -120,19 +151,25 @@ describe('threadDetailReducer function', () => {
         userId: 'users-1',
       },
     };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual({
       ...initialState,
       upVotesBy: [action.payload.userId],
     });
 
+    // action: unlike threadDetail
     const nextState2 = threadDetailReducer(nextState, action);
 
+    // assert
     expect(nextState2).toEqual(initialState);
   });
 
   it('should return the threadDetail with the toggled dislike thread when given by TOGGLE_DISLIKE_DETAIL action', () => {
+    // arrange
     const initialState = {
       id: 'thread-1',
       title: 'Thread Pertama',
@@ -167,19 +204,25 @@ describe('threadDetailReducer function', () => {
         userId: 'users-1',
       },
     };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual({
       ...initialState,
       downVotesBy: [action.payload.userId],
     });
 
+    // action: undislike threadDetail
     const nextState2 = threadDetailReducer(nextState, action);
 
+    // assert
     expect(nextState2).toEqual(initialState);
   });
 
   it('should return the threadDetail with the toggled like comment when given by TOGGLE_LIKE_COMMENT action', () => {
+    // arrange
     const initialState = {
       id: 'thread-1',
       title: 'Thread Pertama',
@@ -215,8 +258,11 @@ describe('threadDetailReducer function', () => {
         userId: 'users-1',
       },
     };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual({
       ...initialState,
       comments: initialState.comments.map((comment) => {
@@ -230,12 +276,15 @@ describe('threadDetailReducer function', () => {
       }),
     });
 
+    // action: unlike comment
     const nextState2 = threadDetailReducer(nextState, action);
 
+    // assert
     expect(nextState2).toEqual(initialState);
   });
 
   it('should return the threadDetail with the toggled dislike comment when given by TOGGLE_DISLIKE_COMMENT action', () => {
+    // arrange
     const initialState = {
       id: 'thread-1',
       title: 'Thread Pertama',
@@ -271,8 +320,11 @@ describe('threadDetailReducer function', () => {
         userId: 'users-1',
       },
     };
+
+    // action
     const nextState = threadDetailReducer(initialState, action);
 
+    // assert
     expect(nextState).toEqual({
       ...initialState,
       comments: initialState.comments.map((comment) => {
@@ -286,8 +338,10 @@ describe('threadDetailReducer function', () => {
       }),
     });
 
+    // action: undislike comment
     const nextState2 = threadDetailReducer(nextState, action);
 
+    // assert
     expect(nextState2).toEqual(initialState);
   });
 });

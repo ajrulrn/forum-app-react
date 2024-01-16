@@ -14,11 +14,11 @@ function RegisterInput({ register }) {
     <>
       <h2 className="form-title">Register</h2>
       <Label htmlFor="name">Name</Label>
-      <Input type="text" id="name" value={name} onChange={onNameChange} />
+      <Input type="text" id="name" value={name} onChange={onNameChange} placeholder="Your name" />
       <Label htmlFor="email">Email</Label>
-      <Input type="email" id="email" value={email} onChange={onEmailChange} />
+      <Input type="email" id="email" value={email} onChange={onEmailChange} placeholder="Your email" />
       <Label htmlFor="password">Password</Label>
-      <Input type="password" id="password" value={password} onChange={onPasswordChange} />
+      <Input type="password" id="password" value={password} onChange={onPasswordChange} placeholder="Secret" />
       <Button onClick={() => register({ name, email, password })} type="button">Register</Button>
     </>
   );

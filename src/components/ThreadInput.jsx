@@ -21,11 +21,11 @@ function ThreadInput({ addThread }) {
   return (
     <>
       <Label htmlFor="title">Ttitle</Label>
-      <Input type="text" id="title" value={title} onChange={onTitleChange}/>
+      <Input type="text" id="title" value={title} onChange={onTitleChange} />
       <Label htmlFor="body">Body</Label>
       <Textarea id="body" cols="30" rows="5" value={body} onChange={onBodyChange} />
       <Label htmlFor="category">Category <small>(optional)</small></Label>
-      <Input type="text" id="category" value={category} onChange={onCategoryChange}/>
+      <Input type="text" id="category" value={category} onChange={onCategoryChange} />
       <Button onClick={onAddThread} type="button">Save</Button>
     </>
   );
