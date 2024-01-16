@@ -1,19 +1,19 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const Card = styled.div`
-  padding: ${props => props.$padding};
+  padding: ${(props) => props.$padding};
   border-radius: 10px;
   background-color: #262D34;
-  margin-bottom: ${props => props.$marginBottom};
-  ${props => props.display === 'flex' && css`
+  margin-bottom: ${(props) => props.$marginBottom};
+  ${(props) => props.display === 'flex' && css`
     display: flex;
     align-items: center;
     gap: 16px;
   `}
-  ${props => props.$justifyContent && css`
-    justify-content: `+props.$justifyContent+`;
+  ${(props) => props.$justifyContent && css`
+    justify-content: ${props.$justifyContent};
   `
-  }
+}
 `;
 
 Card.defaultProps = {

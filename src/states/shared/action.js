@@ -3,7 +3,7 @@ import api from '../../utils/api';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
 
-function asyncPopulateThreads() {
+function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {
     dispatch(showLoading());
 
@@ -21,4 +21,4 @@ function asyncPopulateThreads() {
   };
 }
 
-export { asyncPopulateThreads };
+export { asyncPopulateUsersAndThreads };

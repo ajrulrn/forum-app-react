@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { IoMdAdd } from 'react-icons/io';
 import ThreadsList from '../components/ThreadsList';
-import { asyncPopulateThreads } from '../states/shared/action';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 import { asyncToggleDislikeThread, asyncToggleLikeThread } from '../states/threads/action';
 import Section from '../components/styled/Section';
 
@@ -15,7 +15,7 @@ function HomePage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(asyncPopulateThreads());
+    dispatch(asyncPopulateUsersAndThreads());
   }, [dispatch]);
 
   const onToggleLike = (threadId) => {

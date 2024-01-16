@@ -18,7 +18,7 @@ function ThreadDetail({
   owner,
   toggleLike,
   toggleDislike,
-  authUser,
+  authUser = '',
 }) {
   const isLikedThread = upVotesBy.includes(authUser);
   const isDislikedThread = downVotesBy.includes(authUser);
@@ -64,7 +64,7 @@ ThreadDetail.propTypes = {
   owner: PropTypes.shape(ownerShape).isRequired,
   toggleLike: PropTypes.func.isRequired,
   toggleDislike: PropTypes.func.isRequired,
-  authUser: PropTypes.string,
+  authUser: PropTypes.string.isRequired,
 };
 
 export default ThreadDetail;

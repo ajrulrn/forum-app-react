@@ -1,3 +1,11 @@
+/**
+ * test scenario
+ *
+ * - asyncPopulateUsersAndThreads thunk
+ *  - should dispatch action correctly when data fetching success
+ *  - should dispatch action and call alert correctly when data fetching failed
+ */
+
 import {
   afterEach,
   beforeEach,
@@ -8,7 +16,7 @@ import {
 } from 'vitest';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../../utils/api';
-import { asyncPopulateThreads } from '../action';
+import { asyncPopulateUsersAndThreads } from '../action';
 import { receiveThreadsActionCreator } from '../../threads/action';
 import { receiveUsersActionCreator } from '../../users/action';
 
@@ -47,18 +55,21 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
     api.getUsers = api._getUsers;
     api.getThreads = api._getThreads;
 
+    // delete backup data
     delete api._getUsers;
     delete api._getThreads;
   });
 
   it('should dispatch action correctly when data fetching success', async () => {
+    // arrange
+    // stub implementation
     api.getUsers = () => Promise.resolve(fakeUserReponse);
     api.getThreads = () => Promise.resolve(fakeThreadResponse);
-
+    // mock dispatch
     const dispatch = vi.fn();
-
-    await asyncPopulateThreads()(dispatch);
-
+    // action
+    await asyncPopulateUsersAndThreads()(dispatch);
+    // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(dispatch).toHaveBeenCalledWith(receiveThreadsActionCreator(fakeThreadResponse));
     expect(dispatch).toHaveBeenCalledWith(receiveUsersActionCreator(fakeUserReponse));
@@ -66,14 +77,17 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
   });
 
   it('should dispatch action and call alert correctly when data fetching failed', async () => {
+    // arrange
+    // stub implementation
     api.getUsers = () => Promise.reject(fakeErrorResponse);
     api.getThreads = () => Promise.reject(fakeErrorResponse);
-
+    // mock dispatch
     const dispatch = vi.fn();
+    // mock alert
     window.alert = vi.fn();
-
-    await asyncPopulateThreads()(dispatch);
-
+    // action
+    await asyncPopulateUsersAndThreads()(dispatch);
+    // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
     expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
     expect(dispatch).toHaveBeenCalledWith(hideLoading());

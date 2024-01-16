@@ -19,7 +19,7 @@ function ThreadItem({
   totalComments,
   createdAt,
   user,
-  authUser,
+  authUser = '',
   toggleLike,
   toggleDislike,
 }) {
@@ -76,7 +76,7 @@ const threadItemShape = {
 ThreadItem.propTypes = {
   ...threadItemShape,
   user: PropTypes.shape(userShape).isRequired,
-  authUser: PropTypes.string,
+  authUser: PropTypes.string.isRequired,
   toggleLike: PropTypes.func.isRequired,
   toggleDislike: PropTypes.func.isRequired,
 };
